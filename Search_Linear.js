@@ -10,7 +10,7 @@ console.log(usernames.includes("Luccy"))
     //loop through the array and check if the current arr element is equal to the value
     //if it is, return the index at which the element is found
     //if the value is never found, return -1
-function search (arr, num) {
+function linearSearch (arr, num) { //big O - O(n)
     for(let i = 0; i < arr.length; i++){
         if(num === arr[i])
         {
@@ -20,4 +20,4 @@ function search (arr, num) {
     return -1;
 }
 
-console.log(search([2,3,4,5,64,35,53], 35))
+console.log(linearSearch([2,3,4,5,64,35,53], 35))
