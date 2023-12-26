@@ -18,7 +18,7 @@ function binarySearch(arr, elem) {
     let end = arr.length - 1;
     let middle = Math.floor((start + end) / 2); //rounds a number down
     console.log(start, middle, end)
-    while (arr[middle] !== elem)
+    while (arr[middle] !== elem && start <= end) //start <= end -  prevents looping forever
     {
         if(elem < arr[middle]){
             end = middle - 1;
@@ -29,7 +29,11 @@ function binarySearch(arr, elem) {
         middle = Math.floor((start + end) / 2)
     }
     console.log(start, middle, end);
-    return middle;
+    if(arr[middle] ===  elem){
+        return middle;
+    }
+    return -1;
+    //return arr[middle] === elem ? middle : -1; - refactor
 }
 console.log(binarySearch([2,5,6,9,13,15,28,30], 28))
 // [2, 5, 6, 9, 13, 15, 28, 30]
