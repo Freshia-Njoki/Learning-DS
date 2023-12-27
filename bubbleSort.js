@@ -11,7 +11,7 @@ const swap2 = (arr, idx1, idx2) => {
     [arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]];
 }
 
-//BUBBLE SORT - Places the largest values into sorted positions first
+//BUBBLE SORT - places the largest values into sorted positions first
 
 //BUBBLE SORT PSEUDOCODE
     //define a function takes an array
