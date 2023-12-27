@@ -11,6 +11,8 @@ const swap2 = (arr, idx1, idx2) => {
     [arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]];
 }
 
+//BUBBLE SORT - Places the largest values into sorted positions first
+
 //BUBBLE SORT PSEUDOCODE
     //define a function takes an array
     //start looping from the end of the array towards the beginning with a variable called i
@@ -18,7 +20,7 @@ const swap2 = (arr, idx1, idx2) => {
     //if arr[j] is greater than arr[j+1], swap those two values!
     //return the sorted array
 
-function bubbleSort(arr) {
+function bubbleSort(arr) { //0(n^2)
     // for (let i = 0; i < arr.length; i++)
     for (var i = arr.length; i > 0; i--) //starting from the arr far end
     //as i goes down so does j - running the loop fewer times
@@ -44,7 +46,7 @@ console.log(bubbleSort([37, 45, 29,8,12,88,-3]));
 
 
 //ES 6(2015) VERSION IMPLEMENTATION
-function bubbleSort2(arr) {
+function bubbleSort2(arr) { //big 0 of bubbleSort generally is 0(n^2) -  nested loop where, for each item in the arr we're making n number of comparisons 
     const swap3 = (arr, idx1, idx2) => {
         [arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]];
     }
@@ -68,7 +70,7 @@ console.log(bubbleSort([37, 45, 29,8,12,88,-3]));
     //make a variable noSwaps if its true break out of the loop
 
     //optimized with no swaps
-    function bubbleSortOpt(arr) {
+    function bubbleSortOpt(arr) { //big O is nearly linear time O(n) with no swaps -best case scenario
         let noSwaps;
         for (let i = arr.length; i > 0; i--) { 
             noSwaps = true; //assumption that initially there're no swaps
@@ -88,3 +90,4 @@ console.log(bubbleSort([37, 45, 29,8,12,88,-3]));
         return arr;
     }
     console.log(bubbleSortOpt([8,1,2,3,4,5,6,7]));//almost sorted array to optimize the code-such that if all items are sorted we just terminate the loop, no need to make all comparisons
+                                                  //in this eg. big O = O(2n) >> O(n) - since we made just 2 comparisons: one with swaps one to compare everything falls in place
