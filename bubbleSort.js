@@ -66,7 +66,7 @@ function bubbleSort2(arr) { //big 0 of bubbleSort generally is 0(n^2) -  nested 
 console.log(bubbleSort([37, 45, 29,8,12,88,-3]));
 
 //OPTIMIZATION - Short circuit our code
-//bubbleSort - best candidate for nearly sorted array
+//bubbleSort - Best candidate for nearly sorted array
 //even when all items are sorted and comparisons aren't reduced to one the code continues to run until the last comparison is made
     //make a variable noSwaps if its true break out of the loop
 
