@@ -10,7 +10,7 @@
     //shrink the window of comparison as we loop through- start comparing from next item [sorted elem index+1]
  
 
-function selectionSort(arr){ 
+function selectionSort(arr){ //O(n^2) - we compare every element to every other element in the array
     for(let i = 0; i < arr.length; i++){
         let minVal = i;
         for(j = i + 1; j < arr.length; j++){ // j=i+1 means - compare the first element with the second not the first again
