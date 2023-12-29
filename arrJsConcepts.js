@@ -34,3 +34,13 @@ console.log([].concat(...[[1],[2],[3]])); //spread returns items all in one arra
 let reduceArr = [32, 35, 2, 5, 63, 46];
 let sum = reduceArr.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
 console.log(sum);
+
+function distance(a,b){ //distance formula between 2 points
+    let x = 5;
+    let y = 10;
+    let dx = a.x - b.x;
+    let dy = a.y - b.y;
+
+    return Math.hypot(dx, dy);
+} 
+console.log(distance(10,5))
