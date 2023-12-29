@@ -1,4 +1,6 @@
-const { get } = require("mongoose");
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+console.log(fruits.sort());
+console.log(fruits.reverse());//reverses the sort
 
 let arr = [2,35,123,45,5,5,62];
 console.log(Math.floor(arr.length /2))
@@ -27,3 +29,8 @@ console.log(arr.concat(...Arr,["fre","shia"]));
 //power of spread operator
 console.log([].concat([[1],[2],[3]])); //items in separate array
 console.log([].concat(...[[1],[2],[3]])); //spread returns items all in one array
+
+//reduce(requires a callback as an argument) takes each item and adds together and create a total
+let reduceArr = [32, 35, 2, 5, 63, 46];
+let sum = reduceArr.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+console.log(sum);
