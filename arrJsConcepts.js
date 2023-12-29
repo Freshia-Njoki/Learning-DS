@@ -17,3 +17,13 @@ function getDigit(num, i){
 console.log(getDigit(2344,0));
 
 console.log(Math.max(34,2));// returns the largest number
+
+let digitBuckets =  Array.from({length : 10}, () => []); //creating an array of length 10
+console.log(digitBuckets) //array of 10 empty subArrays
+
+let Arr = [3,53,35,2,6]
+console.log(arr.concat(...Arr,["fre","shia"]));
+
+//power of spread operator
+console.log([].concat([[1],[2],[3]])); //items in separate array
+console.log([].concat(...[[1],[2],[3]])); //spread returns items all in one array
