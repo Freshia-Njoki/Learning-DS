@@ -195,20 +195,35 @@ class DoublyLinkedList{
         this.length++;
         return true;
     }
-    remove(){
+    remove(index){
         if(index < 0 || index >= this.length) return undefined;
-        
+        if(index === 0) return this.shift();
+        if(index === this.length - 1) return this.pop();
+        let removedNode = this.get(index);
+        let beforeNode = removedNode.prev;
+        let afterNode = removedNode.next;
+        beforeNode.next = afterNode;
+        afterNode.prev = beforeNode;
+                //OR
+        // removedNode.prev.next = removedNode.next;
+        // removedNode.next.prev = removedNode.prev;
+        removedNode.next = null;
+        removedNode.prev = null;
+        this.length--;
+        return removedNode;
     }
 }
 
 list = new DoublyLinkedList()
 list.push("99");
 list.push("100");
+list.push("110");
 list.push("120");
 // console.log(list.pop());
 // console.log(list.shift());
 // console.log(list.unshift("150"));
 // console.log(list.get(1));
 // console.log(list.set(1,"140"));
-console.log(list.insert(3,"140"));
+// console.log(list.insert(3,"140"));
+console.log(list.remove(3));
 // console.log(list)
