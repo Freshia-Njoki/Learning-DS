@@ -1,4 +1,4 @@
-//Linked list: (one-directional ordered DS to store any type of data. collection of nodes with value and pointer to another node or null(no indexing)
+//Singly  Linked list: (one-directional ordered DS to store any type of data. collection of nodes with value and pointer to another node or null(no indexing)
 //contains head(beginning of the linked list), tail(end of the linked list) and length
 //random access is not allowed
 
