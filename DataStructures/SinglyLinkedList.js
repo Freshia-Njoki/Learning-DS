@@ -2,6 +2,9 @@
 //contains head(beginning of the linked list), tail(end of the linked list) and length
 //random access is not allowed
 
+//BIG O: insertion - 0(1), Removal - It depends..0(1) or 0(N)
+      // searching - 0(N), Accessing - 0(N)
+
 //node pseudo
 //piece of data in node-val
 //reference to next node - next
