@@ -1,7 +1,9 @@
 //LIFO data structure collection -  we can add or remove from the start or end but not both
-//use cases: managing function invocation, routing history, undo/redo
+//stack are not build in DS in Js
+//use cases: managing function invocation(the call stack), routing history, undo/redo
 //in array implementation we focus with push and pop since we don't have to re-index items
 //BIG O: insertion - 0(1), Removal - 0(1), searching - 0(N), Accessing - 0(N)
+//NB: pushing and popping in stack should be constant time - only happens at the beginning, searching and accessing- we traverse .next.next
 
 //Push Pseudocode
 //the function should accept a value

@@ -2,7 +2,6 @@
 //2 classes:Node with val, next, prev and DoublyLinkedList with head, tail, length
 //has 2 pointers: prev and next i.e. is multidirectional
 //BIG O: insertion - 0(1), Removal - 0(1), searching - 0(N) (can be 0(N/2) - divide the list then start from left or right), Accessing - 0(N)
-       //Accessing - 0(N)
 
 //METHODS
 //Push - adding a node to the end of the D.L.L
