@@ -71,6 +71,7 @@
 //return true
 
 //Remove - removing a node from L.list at a specific position
+//Pseudocode
 //if the index is less than 0 of greater than the length, return undefined
 //if the index is the same as the length -1, pop
 //if the index is 0, shift
@@ -78,7 +79,18 @@
 //set the next property on that node to be the next of the next node
 //decrement the length
 //return the value of the node removed
- 
+
+//Reverse(CompSci interview question ) - reversing the L.list in place, without making duplicate(traverse as you reverse)
+//Pseudocode
+//swap the head and tail
+//create a variable called next
+//create a variable called prev
+//create a variable called node and initialize it to the head property
+//loop through the list
+//set next to be the next property on whatever node is
+//set the next property on the node to be whatever prev is
+//set prev to be the value of the node variable
+//set the node variable to be the value of the next variable
 class Node{
     constructor(val){
         this.val = val;
@@ -187,6 +199,29 @@ class SinglyLinkedList{
         this.length--;
         return removed;
     }
+    reverse() {
+        let node = this.head;
+        this.head = this.tail;
+        this.tail = node;
+        let next;
+        let prev = null;
+        for ( let i = 0; i < this.length; i++){
+            next = node.next;
+            node.next = prev;
+            prev = node;
+            node = next;
+        }
+        return this;
+    }
+    print(){ //helps to visualize how reverse method works
+        let arr = [];
+        let current = this.head;
+        while(current){
+            arr.push(current.val);
+            current = current.next;
+        }
+        console.log(arr);
+    }
 }
 
 // let first = new Node("Hi");
@@ -200,13 +235,16 @@ list.push("HI");
 list.push("there");
 list.push("!");
 list.push(":)");
+
 // console.log(list.pop());
-console.log(list.shift());
-console.log(list);//checks the head of the list after shifting
-// console.log(list.head.next);
-console.log(list.unshift("First"));
-console.log(list.get(3));
-console.log(list.set(2, "!!!")); //returns true though val at index 2 = !!!
-console.log(list.get(2))
-console.log(list.insert(4, "345"));//returns true
-console.log(list.remove(3))
+// console.log(list.shift());
+// console.log(list);//checks the head of the list after shifting
+// // console.log(list.head.next);
+// console.log(list.unshift("First"));
+// console.log(list.get(3));
+// console.log(list.set(2, "!!!")); //returns true though val at index 2 = !!!
+// console.log(list.get(2))
+// console.log(list.insert(4, "345"));//returns true
+// console.log(list.remove(3));
+console.log(list);
+console.log(list.reverse().print());
