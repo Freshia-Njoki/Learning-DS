@@ -44,3 +44,5 @@ function distance(a,b){ //distance formula between 2 points
     return Math.hypot(dx, dy);
 } 
 console.log(distance(10,5))
+
+//in arrays insertion and deletion can be expensive
