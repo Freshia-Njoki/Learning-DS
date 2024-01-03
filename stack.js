@@ -6,7 +6,7 @@
 //NB: pushing and popping in stack should be constant time - only happens at the beginning, searching and accessing- we traverse .next.next
 
 //Push Pseudocode
-//the function should accept a value
+//the function should accept a value 
 //create a new node with that value
 //if there are no nodes in the stack, set tht first and last property to be the newly created node
 //if there is at least one node, create a variable that stores the current first property on the stack
