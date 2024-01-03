@@ -56,7 +56,11 @@
     //loop through the list starting from the tail and loop towards the middle
     //return the node once it is found
 
-
+//set - update a node's value at a certain position in the list(D.L.L)
+//create a variable which is the result of the get method at the index passed to the function
+    //if the get method returns a valid node,set the value of that node to be the value passed to the function
+    //return true
+//otherwise, return false
 class Node {
     constructor(val){
         this.val = val;
@@ -143,8 +147,15 @@ class DoublyLinkedList{
                 count--;
             }   
         }
-        return current;
-            
+        return current;           
+    }
+    set(index, val){
+        var replaceNode = this.get(index);
+        if(replaceNode != null){
+            replaceNode.val = val;
+            return true;
+        }
+        return false;
     }
 }
 
@@ -155,5 +166,6 @@ list.push("120");
 // console.log(list.pop());
 // console.log(list.shift());
 // console.log(list.unshift("150"));
-console.log(list.get(1));
+// console.log(list.get(1));
+console.log(list.set(1,"140"));
 // console.log(list)
