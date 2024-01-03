@@ -1,4 +1,5 @@
-//FIFo data structure - with 2 operations adding and removing
+//FIFo data structure - with 2 main operations adding and removing. q is a foundation to more complex data structures
+//BIG O: insertion - 0(1), Removal - 0(1), searching - 0(N), Accessing - 0(N)
 //enqueue- adding from the end
 //dequeue- removing from the beginning(to prevent pop entire list traversal issue)
 //Programming use cases
