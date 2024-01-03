@@ -2,7 +2,7 @@
 //has 2 pointers: prev and next i.e. is multidirectional
 
 //METHODS
-//push - adding a node to the end of the D.L.L
+//Push - adding a node to the end of the D.L.L
 //Pseudocode
 //create a new node with the value passed to the function
 //if the head property is null set the head and tail to be the newly created node(i.e. if the list is empty)
@@ -12,7 +12,7 @@
 //increment the length
 //return the Doubly Linked List
 
-//pop - removing a node from the end of the D.L.L
+//Pop - removing a node from the end of the D.L.L
 //Pseudocode
 //If there is no head, return undefined
 //store the current tail in a variable to return later
@@ -22,7 +22,7 @@
 //decrement the length
 //return the value removed
 
-//shift - removes the node from the beginning of the D.L.L
+//Shift - removes the node from the beginning of the D.L.L
 //Pseudocode
 //if the length is 0, return undefined
 //store the current head property in a variable - oldHead
@@ -35,7 +35,8 @@
 //decrement the length
 //return old head
 
-//unshift - adding a node at the beginning of the D.L.L
+//Unshift - adding a node at the beginning of the D.L.L
+//Pseudocode
 //create a new node with the value passed to the function
 //if the length is 0
     //set the head to be the new node
@@ -48,6 +49,7 @@
 //return the list
 
 //Get - accessing a node by its position
+//Pseudocode
 //if the index is less than 0 or greater or equal to the length, return null
 //if the index is less than or equal to half the length of the list
     //loop through the list starting from the head and loop towards the middle
@@ -56,11 +58,33 @@
     //loop through the list starting from the tail and loop towards the middle
     //return the node once it is found
 
-//set - update a node's value at a certain position in the list(D.L.L)
+//Set - update a node's value at a certain position in the list(D.L.L)
+//Pseudocode
 //create a variable which is the result of the get method at the index passed to the function
     //if the get method returns a valid node,set the value of that node to be the value passed to the function
     //return true
 //otherwise, return false
+
+//Insert - adding a node in the D.L.L by a certain position
+//if the index is less than 0 0r >= length return false
+//if the index is 0, unshift
+//if the index is the same as the length, push
+//use the get method to access the index - 1
+// set the next and prev properties on the correct nodes to link everything together
+//increment the length
+//return true
+
+//Remove - remove a node in a D.L.L at certain position
+//Pseudocode
+//if the index is less than 0 0r >= length return undefined
+//if the index is 0, shift
+//if the index = length-1, pop
+//use get method to retrieve the item to be removed
+//update the next and prev properties to remove the found node from the list
+//set next and prev to null on the found node
+//decrement the length
+//return the removed node
+
 class Node {
     constructor(val){
         this.val = val;
@@ -157,6 +181,24 @@ class DoublyLinkedList{
         }
         return false;
     }
+    insert(index,val){
+        if(index < 0 || index > this.length) return false;
+        if(index === 0) return !!this.unshift(val);//double bang (!!) - coerce to boolean
+        if(index === this.length) return !!this.push(val);//double bang - coerce to boolean
+
+        let newNode = new Node (val);
+        let beforeNode = this.get(index-1);
+        let afterNode = beforeNode.next;
+
+        beforeNode.next = newNode, newNode.prev = beforeNode;
+        newNode.next = afterNode, afterNode.prev = newNode;
+        this.length++;
+        return true;
+    }
+    remove(){
+        if(index < 0 || index >= this.length) return undefined;
+        
+    }
 }
 
 list = new DoublyLinkedList()
@@ -167,5 +209,6 @@ list.push("120");
 // console.log(list.shift());
 // console.log(list.unshift("150"));
 // console.log(list.get(1));
-console.log(list.set(1,"140"));
+// console.log(list.set(1,"140"));
+console.log(list.insert(3,"140"));
 // console.log(list)
