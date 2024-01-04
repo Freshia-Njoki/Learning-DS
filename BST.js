@@ -1,4 +1,6 @@
 //Trees - classic DS that consists of nodes in a parent-child relationship
+//Bog O: insertion - 0(log n), search 0(log n) in best and average case. Although not guaranteed!-in the case of a one-sided BST "making a linked list resulting to 0(n)"
+    //as the number of nodes in tree doubles we increase the steps by 1 hence log(base 2) i.e. 2x no. of nodes: 1 extra step, 4X - 2 extra steps, 8x 3 extra steps
 //Terms - edge, root, leaf, parent, child, siblings
 //Use cases- HTML DOM, folders in OS, comp file sys, network routing(broadcasting), AI, Abstract Syntax Tree, JSON
 //kinds of Trees: Trees, BT, BST-works with sorted data(any node > the root is located to the right, while less is on the lift side)
