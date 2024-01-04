@@ -20,6 +20,22 @@
 //if there is not, add that node as the left property
 //return the entire tree
 
+//Find a node in BST - steps iteratively or recursively
+//Pseudocode
+//starting at the root
+    //check if there is a root, if not - we're done searching!
+    //if there is a root,check if the value of the new node is the value we are looking for.
+    //if we found it, we're done!
+    //if not, check to see if the value is greater than or less than the value of the root
+    //if it is greater
+        //check to see if there is a node to the right
+            //if there is, move to that node and repeat these steps
+            //if there is not, we're done searching!
+    //if it is less
+        //check to see if there is a node to the left
+            //if there is, move to that node and repeat these steps
+            //if there is not, we're done searching!
+//return the foundNode
 class Node {
   constructor(value) {
     this.value = value;
@@ -57,6 +73,23 @@ class BinarySearchTree {
       }
     }
   }
+
+  find(value){
+    if(this.root === null) return false;
+    let current = this.root,
+        found = false;
+    while(current && !found){
+        if(value < current.value){
+            current = current.left;
+        } else if(value > current.value){
+            current = current.right;
+        } else {
+            found = true;
+        }
+    }
+    if(!found) return undefined;
+    return current;
+  }
 }
 
 let tree = new BinarySearchTree();
@@ -70,9 +103,10 @@ let tree = new BinarySearchTree();
 // console.log(tree.root);
 
 console.log(tree.insert(10));
-console.log(tree.insert(5));
-console.log(tree.insert(2));
-console.log(tree.insert(13));
-console.log(tree.insert(11));
-console.log(tree.insert(16));
-console.log(tree.insert(7));
+// console.log(tree.insert(5));
+// console.log(tree.insert(2));
+// console.log(tree.insert(13));
+// console.log(tree.insert(11));
+// console.log(tree.insert(16));
+// console.log(tree.insert(7));
+console.log(tree.find(10));
