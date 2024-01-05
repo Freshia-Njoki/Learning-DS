@@ -38,6 +38,31 @@
             //if there is, move to that node and repeat these steps
             //if there is not, we're done searching!
 //return the foundNode
+
+//Tree Traversal(BFS, DFS "preorder <,postorder >,inorder ^") - unsorted data
+//BFS
+//pseudocode - Iteratively
+//node -> left -> right traversal on the same level
+//create a queue(this can be an array) and a variable to store the values of nodes visited
+//place the root in the queue
+//loop as long as there is anything in the queue
+    //dequeue a node from the q and push the value if the node into the variable that stores the nodes
+    //if there is a left property on the node dequeue - add it to the queue
+    //if there is a right property on the node dequeue - add it to the queue 
+    //NB: push one BFS level to the q(holds temporarily) then start shifting & recording the order
+//return the variable that stores the values
+
+//DFS
+//Preorder Pseudocode
+//create a variable to store the values of nodes visited
+//store the root of the BST in a variable called current
+//write a helper function which accepts a node
+  //push the value of the node to the variable that stores the values
+  //if the node has a left property, call the helper function with the left property on the node
+  //if the node has a right property, call the helper function with the right property on the node
+//invoke the helper function with the current variable
+//return the array of values
+  
 class Node {
   constructor(value) {
     this.value = value;
@@ -73,7 +98,7 @@ class BinarySearchTree {
         }
         current = current.right; //else {part} - updates current so that we traverse further
       }
-    }
+    } 
   }
 
   find(value){
@@ -92,6 +117,30 @@ class BinarySearchTree {
     if(!found) return undefined;
     return current;
   }
+  BFS(){
+    let node = this.root,
+    data  =[],
+    queue =[];
+    queue.push(node);//add at the end
+    while(queue.length){ //non-empty queue
+      node = queue.shift();//remove from the beginning
+      data.push(node.value);//list to be returned
+      if(node.left) queue.push(node.left);
+      if(node.right) queue.push(node.right);
+    }
+    return data;
+  }
+  DFSPreOrder(){
+    let data =[];
+    let current = this.root;
+    function traverse(node){
+      data.push(node.value);
+      if(node.left) traverse(node.left)
+      if(node.right) traverse(node.right)
+    }
+  traverse(current);
+  return data;
+  }
 }
 
 let tree = new BinarySearchTree();
@@ -104,11 +153,24 @@ let tree = new BinarySearchTree();
 
 // console.log(tree.root);
 
-console.log(tree.insert(10));
+// console.log(tree.insert(10));
 // console.log(tree.insert(5));
 // console.log(tree.insert(2));
 // console.log(tree.insert(13));
 // console.log(tree.insert(11));
 // console.log(tree.insert(16));
 // console.log(tree.insert(7));
-console.log(tree.find(10));
+// console.log(tree.find(10));
+
+//BFS - go horizontal'breadth' b4 vertical'depth'
+tree.insert(10);
+tree.insert(6);
+tree.insert(15);
+tree.insert(3);
+tree.insert(8);
+tree.insert(20);
+//          10
+//        6   15
+//      3  8    20
+console.log(tree.BFS())
+console.log(tree.DFSPreOrder())
