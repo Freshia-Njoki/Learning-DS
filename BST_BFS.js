@@ -53,12 +53,32 @@
 //return the variable that stores the values
 
 //DFS
-//Preorder Pseudocode
+//PreOrder Pseudocode - recursively
 //create a variable to store the values of nodes visited
 //store the root of the BST in a variable called current
 //write a helper function which accepts a node
   //push the value of the node to the variable that stores the values
   //if the node has a left property, call the helper function with the left property on the node
+  //if the node has a right property, call the helper function with the right property on the node
+//invoke the helper function with the current variable
+//return the array of values
+
+//PostOrder Pseudocode-explore the left and right then push(visit) the value later 'so that we can start visiting from the bottom-most from both left and right and finish with the root
+//create a variable to store the values of nodes visited
+//store the root of the BST in a variable called current
+//write a helper function which accepts a node
+  //if the node has a left property, call the helper function with the left property on the node
+  //if the node has a right property, call the helper function with the right property on the node
+  //push the value of the node to the variable that stores the values
+  //invoke the helper function with the current variable
+//return the array of values
+
+//InOrder Pseudocode - recursively (traverse left 'if its a leaf visit it, visit node, traverse right 'if its a leaf visit it)
+//create a variable to store the values of nodes visited
+//store the root of the BST in a variable called current
+//write a helper function which accepts a node
+  //if the node has a left property, call the helper function with the left property on the node
+  //push the value of the node to the variable that stores the values
   //if the node has a right property, call the helper function with the right property on the node
 //invoke the helper function with the current variable
 //return the array of values
@@ -133,14 +153,38 @@ class BinarySearchTree {
   DFSPreOrder(){
     let data =[];
     let current = this.root;
-    function traverse(node){
+    function traverse(node){//helper function
       data.push(node.value);
+      if(node.left) traverse(node.left)//recursively calling the helper function
+      if(node.right) traverse(node.right)
+    }
+  traverse(current);//invoking the helper fxn
+  return data;
+  }
+
+  DFSPostOrder(){
+    let data =[];
+    let current = this.root;
+    function traverse(node){//helper function
       if(node.left) traverse(node.left)
       if(node.right) traverse(node.right)
+      data.push(node.value);
     }
   traverse(current);
   return data;
   }
+
+  DFSInOrder(){
+    let data =[];
+    let current = this.root;
+    function traverse(node){
+      if(node.left) traverse(node.left)
+      data.push(node.value);
+      if(node.right) traverse(node.right)
+    }
+  traverse(current);
+  return data;
+  }  
 }
 
 let tree = new BinarySearchTree();
@@ -173,4 +217,6 @@ tree.insert(20);
 //        6   15
 //      3  8    20
 console.log(tree.BFS())
-console.log(tree.DFSPreOrder())
+console.log(tree.DFSPreOrder())//10 6 3 8 15 20
+console.log(tree.DFSPostOrder())//3 8 6 20 15 10
+console.log(tree.DFSInOrder())//3 6 8 10 15 20
