@@ -155,8 +155,8 @@ class BinarySearchTree {
     let current = this.root;
     function traverse(node){//helper function
       data.push(node.value);
-      if(node.left) traverse(node.left)//recursively calling the helper function
-      if(node.right) traverse(node.right)
+      if(node.left) traverse(node.left);//recursively calling the helper function
+      if(node.right) traverse(node.right);
     }
   traverse(current);//invoking the helper fxn
   return data;
@@ -166,8 +166,8 @@ class BinarySearchTree {
     let data =[];
     let current = this.root;
     function traverse(node){//helper function
-      if(node.left) traverse(node.left)
-      if(node.right) traverse(node.right)
+      if(node.left) traverse(node.left);
+      if(node.right) traverse(node.right);
       data.push(node.value);
     }
   traverse(current);
@@ -178,9 +178,9 @@ class BinarySearchTree {
     let data =[];
     let current = this.root;
     function traverse(node){
-      if(node.left) traverse(node.left)
+      node.left && traverse(node.left); //replaced the conditionals
       data.push(node.value);
-      if(node.right) traverse(node.right)
+      node.right && traverse(node.right); //replaced the conditionals
     }
   traverse(current);
   return data;
