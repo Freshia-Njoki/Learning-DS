@@ -1,5 +1,5 @@
 //Priority queue-Is a DS where each element has a priority associated with it.
-//Big O - Insertion O(log N), Removal O(log N), Search O(N)-BST if preferred in search
+//Big O - Insertion O(log N), Removal O(log N), Search O(N)-BST if prefer red in search
 //It's implemented as MinBinaryHeap since lower number means higher priority
 
 //pseudocode
