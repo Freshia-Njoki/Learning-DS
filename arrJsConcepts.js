@@ -51,3 +51,5 @@ console.log("hello".charCodeAt(1)); //utf-8
 console.log("hello".charCodeAt(1)-96);//gives the alphabetic position
 
 //Math.min()
+//filter method
+//delete
