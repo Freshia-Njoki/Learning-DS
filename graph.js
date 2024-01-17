@@ -26,6 +26,31 @@
 //inside the loop, call removeEdge function with the vertex being removed and any values in the adjList for that vertex
 //delete the key in the adjList for  that vertex
 
+//DFS Traversal - Recursively
+//The function should accept a starting node
+//create a list to store the end result, to be returned at the very end
+//create an object to store visited vertices
+//create a helper function which accepts a vertex
+    //the helper function should return early if the vertex is empty
+    //the helper function should place the vertex it accepts into the visited object and push that vertex into the result array
+    //loop over all of the values in the adjacencyList for that vertex
+    //if any of those values have not been visited, recursively invoke the helper function with that vertex
+//invoke the helper function with the starting vertex
+//return the result array
+
+//DFS Traversal - Iteratively
+//the function should accept a starting node
+//create a stack to help keep track of vertices(use a list/array)
+//create a list to store the end result, to be returned at the very end
+//create an object to store visited vertices
+//add the starting vertex to the stack, and mark it visited
+//while the stack has something in it:
+    //pop the next vertex from the stack
+    //if that vertex hasn't been visited yet:
+        //mark it as visited
+        //add it to te result list
+        //push all of its neighbors into the stack
+    //return the result array
 class Graph{
     constructor(){
         this.adjacencyList = {}; //creating the adjList as obj
@@ -49,24 +74,67 @@ class Graph{
         }
         delete this.adjacencyList[vertex]; //deletes the Hong Kong vertex entirely
     }
+    depthFirstRecursive(start){ //accepts a starting node
+        const result = []; //collect result
+        const visited = {};
+        const adjacencyList = this.adjacencyList; //preserves adjList meaning
+        function dfs (vertex){
+            if(!vertex) return null; //we've hit the end of the line
+            visited[vertex] = true; //marking vertex as visited
+            result.push(vertex); //push to result array
+            adjacencyList[vertex].forEach(neighbor => { //loop thr each item stored in each adjList vertex
+                if(!visited[neighbor]){ //if its neighbor is not visited
+                    return dfs(neighbor); //recursively call dfs on that neighbor-for it to be visited
+                }
+            });
+        } dfs(start);
+        return result; //[ 'A', 'B', 'D', 'E', 'C', 'F' ]
+    }
 }
 
 let g = new Graph()
-g.addVertex("Tokyo");
-g.addVertex("San Francisco");
-g.addVertex("Dallas");
-g.addVertex("Aspen");
-g.addVertex("Hong Kong");
-g.adjacencyList["Tokyo"].push("Japan");
-g.addEdge("Dallas", "Tokyo"); //Dallas -> tokyo && tokyo <- Dallas:each is stored in the others array 'as a value'
-g.addEdge("Dallas", "Aspen");
-g.addEdge("Hong Kong", "Tokyo");
-g.addEdge("Hong Kong", "Dallas");
-g.addEdge("San Francisco", "Hong Kong");
-g.addEdge("San Francisco", "Aspen");
-g.removeEdge("Dallas", "Aspen");//removing connection b2n Dallas and Aspen
+// g.addVertex("Tokyo");
+// g.addVertex("San Francisco");
+// g.addVertex("Dallas");
+// g.addVertex("Aspen");
+// g.addVertex("Hong Kong");
+// g.adjacencyList["Tokyo"].push("Japan");
+// g.addEdge("Dallas", "Tokyo"); //Dallas -> tokyo && tokyo <- Dallas:each is stored in the others array 'as a value'
+// g.addEdge("Dallas", "Aspen");
+// g.addEdge("Hong Kong", "Tokyo");
+// g.addEdge("Hong Kong", "Dallas");
+// g.addEdge("San Francisco", "Hong Kong");
+// g.addEdge("San Francisco", "Aspen");
+// g.removeEdge("Dallas", "Aspen");//removing connection b2n Dallas and Aspen
 // g.removeEdge("Dallas", "Tokyo ");
-g.removeVertex("Hong Kong");
-g.removeVertex("Aspen");
+// g.removeVertex("Hong Kong");
+// g.removeVertex("Aspen");
 // console.log(g);
-console.log(g.adjacencyList);
+// console.log(g.adjacencyList);
+
+
+//DFS graph traversal setup
+g.addVertex("A");
+g.addVertex("B");
+g.addVertex("C");
+g.addVertex("D");
+g.addVertex("E");
+g.addVertex("F");
+
+g.addEdge("A", "B");
+g.addEdge("A", "C");
+g.addEdge("B", "D");
+g.addEdge("C", "E");
+g.addEdge("D", "E");
+g.addEdge("D", "F");
+g.addEdge("E", "F");
+
+//           A
+//         /   \
+//        B     C
+//        \     |
+//         D---E
+//          \ /
+//           F
+
+console.log(g.depthFirstRecursive("A"))
