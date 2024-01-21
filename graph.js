@@ -4,6 +4,8 @@
 //types of graphs: weighted, unweighted, directed, undirected
 //Graphs can be represented as: Adjacency Matrix, Adjacency List - diff in DSImg
 
+const { current } = require("@reduxjs/toolkit");
+
 //Undirected graph - no direction or can be 2-way
 //Adding a vertex Pseudocode
 //write a method called addVertex, which accepts a name of a vertex
@@ -51,6 +53,18 @@
         //add it to te result list
         //push all of its neighbors into the stack
     //return the result array
+
+//BFS
+//This function accept a starting vertex
+//create a queue (you can use an array) and place the starting vertex in it
+//create an array to store the nodes visited
+//create an object to store the nodes visited
+//mark the starting vertex as visited
+//loop as long as there is anything in the queue
+//remove the first vertex from the queue and push it into the array that nodes visited
+//loop over each vertex in the adjacency list for the vertex, mark is as visited and enqueue that vertex
+//once you have finished looping, return the array of visited nodes
+
 class Graph{
     constructor(){
         this.adjacencyList = {}; //creating the adjList as obj
@@ -89,6 +103,48 @@ class Graph{
             });
         } dfs(start);
         return result; //[ 'A', 'B', 'D', 'E', 'C', 'F' ]
+    }
+    depthFirstIteratively(start){ //A
+        const stack = [start]; //Intializing stack with the start node
+        const result = [];
+        const visited ={};
+        let currentVertex;
+
+        visited[start] = true;
+        while(stack.length){
+            console.log(stack); //to see what I'm working with
+            currentVertex = stack.pop();
+            result.push(currentVertex);
+
+            this.adjacencyList[currentVertex].forEach(neighbor => { //loop thr its neighbor B & C in [A : ["B", "C"]]
+                if(!visited[neighbor]) {
+                    visited[neighbor] = true;
+                    stack.push(neighbor);
+                }
+            });
+        }
+        return result;
+    }
+    breathFirst(start){ //FIFO
+        const queue = [start];
+        const result = [];
+        const visited = {};
+        let currentVertex;
+        visited[start] = true; //to prevent looping back - in search of adjList neighbors
+         
+        while (queue.length){
+            currentVertex = queue.shift();//removing from the start
+            result.push(currentVertex); //visit and store it to resultArr
+
+            // this.adjacencyList[currentVertex].slice().reverse().forEach(neighbor => { right to left: A,C,B,E,D,F
+            this.adjacencyList[currentVertex].forEach(neighbor => { //check its neighbors - left to right A,B,C,D,E,F
+                if(!visited[neighbor]){ //if not visited,...
+                    visited[neighbor] = true; //visit and mark it as visited...
+                    queue.push(neighbor) //push into the queue
+                }
+            })
+        }
+        return result;
     }
 }
 
@@ -137,4 +193,6 @@ g.addEdge("E", "F");
 //          \ /
 //           F
 
-console.log(g.depthFirstRecursive("A"))
+// console.log(g.depthFirstRecursive("A")); //anticlockwise
+console.log(g.depthFirstIteratively("A")); //clockwise - best according to me
+console.log(g.breathFirst("A"));
