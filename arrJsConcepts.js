@@ -53,3 +53,7 @@ console.log("hello".charCodeAt(1)-96);//gives the alphabetic position
 //Math.min()
 //filter method
 //delete
+//slice
+//reverse
+//sort()
+// .values
