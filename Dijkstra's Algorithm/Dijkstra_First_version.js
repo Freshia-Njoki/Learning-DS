@@ -1,4 +1,5 @@
 //Dijkstra's Pseudocode
+// since we're sorting:sorting Big O is O(N * log(N))
 //this function should accept a starting and ending vertex
 //create an object (we'll call it distances) and set each key to be every vertex in the adjacency list with a value of infinity, except for the starting vertex which should have a value of 0
 //after setting a value in the distances object, add each vertex with a priority of Infinity to the priority queue, except the starting vertex, which should have a priority of 0 because that's where we begin
@@ -13,6 +14,7 @@
             //update the previous object to contain that vertex
             //enqueue the vertex with the total distances from the start node
 
+//Implementing Dijkstra's algorithm with naive priority queue, hence slower(update with binary heap PriorityQueue to make it faster)
 class PriorityQueue { //naive priority queue
     constructor(){
         this.values = [];
