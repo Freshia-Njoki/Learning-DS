@@ -46,7 +46,12 @@ function distance(a,b){ //distance formula between 2 points
 console.log(distance(10,5))
 
 //in arrays insertion and deletion can be expensive
+// Declaration and instantiation of an array with a specific size
+var myArray = new Array(5);
 
+// Declaration and initialization of an array
+var myArray = [1, 2, 3, 4, 5];
+ 
 console.log("hello".charCodeAt(1)); //utf-8
 console.log("hello".charCodeAt(1)-96);//gives the alphabetic position
 
@@ -54,6 +59,14 @@ console.log("hello".charCodeAt(1)-96);//gives the alphabetic position
 //filter method
 //delete
 //slice
+//toString()
+//removeAt()
+//lastIndexOf()
+//contains() return a boolean value
+//size()
+//toArray()
+//indexOf() - returns the index of the first occurrence of a certain item in the array, if number is not found it returns -1
+//insert()
 //reverse
 //sort()
 // .values
